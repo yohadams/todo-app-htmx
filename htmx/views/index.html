@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-16x16.png">
+
+  <script src="static/js/htmx.js"></script>
+  <script src="static/js/script.js"></script>
+  <link rel="stylesheet" href="static/css/pico.css">
+  <link rel="stylesheet" href="static/css/style.css">
+  <title>TODO: app</title>
+</head>
+<body>
+  <main class="container">
+    <hgroup>
+      <h2>TODO: app!</h2>
+      <p>Showcase of htmx using TODO app.</p>
+    </hgroup>
+    <article>
+      <form hx-post="/add" hx-target="ol" hx-swap="innerHTML transition:true">
+        <input type="text" name="text" id="todo-text" placeholder="Add a todo" required>
+        <small></small>
+        <button type="submit">Add</button>
+      </form>
+      <div id="filter-wrapper" class="container">
+        <form id="search-phrase"></form>
+        <svg id="filter" hx-get="/toggle-search" hx-target="#filter-wrapper" hx-swap="innerHTML transition:true" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+          <path d="M4 4h16v2.172a2 2 0 0 1 -.586 1.414l-4.414 4.414v7l-6 2v-8.5l-4.48 -4.928a2 2 0 0 1 -.52 -1.345v-2.227z" />
+        </svg>
+      </div>
+      <ol type="1" hx-get="/todos/all" hx-trigger="load" hx-swap="innerHTML transition:true">
+        <div id="indicator" aria-busy="true"></div>
+      </ol>
+    </article>
+  </main>
+</body>
+</html>

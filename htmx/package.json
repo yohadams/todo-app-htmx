@@ -1,0 +1,22 @@
+{
+  "name": "todo-app-htmx",
+  "version": "1.0.0",
+  "description": "HTMX + Express TODO app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./main.js"
+  },
+  "keywords": [
+    "htmx",
+    "todo"
+  ],
+  "author": "YohAdams",
+  "license": "Beerware",
+  "dependencies": {
+    "express": "^4.18.2",
+    "htmx.org": "^1.9.10"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}

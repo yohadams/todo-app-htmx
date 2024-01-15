@@ -1,0 +1,91 @@
+:root {
+  --mySpacing: 8px;
+  --hoverSVGColor: #fff;
+  --svgTransitionsTime: 150ms;
+}
+
+body { 
+  height: 100vh;
+  main {
+    height: 100%;
+  }
+  #search-phrase {
+    --typography-spacing-vertical: 0;
+    --spacing: 0;
+    input {
+      --typography-spacing-vertical: 0;
+    }
+  }
+  #filter-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas: 'input favorite toggle';    
+    gap: var(--mySpacing);
+    align-items: center;
+    margin-bottom: var(--typography-spacing-vertical);
+    padding: 0 var(--mySpacing);
+    height: 56px;
+  }
+  #only-favorite {
+    grid-area: favorite;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  #filter {
+    grid-area: toggle;
+    cursor: pointer;
+    transition: fill var(--svgTransitionsTime) ease-in-out, stroke var(--svgTransitionsTime) ease-in-out;
+    &:has(.active):hover {
+      fill: var(--hoverSVGColor);
+    }
+    &:hover {
+      stroke: var(--hoverSVGColor);
+    }
+  }
+  form {
+    & > small {
+      display: block;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s, visibility 0.5s;
+    }
+  }
+  ol {
+    padding-left: 0;
+    li {
+      list-style-type: none;
+      & > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--mySpacing);
+        padding: 0 var(--mySpacing);
+        div {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          hgroup {
+            --typography-spacing-vertical: 0;
+            padding: var(--mySpacing);
+          }
+          fieldset {
+            margin-bottom:  0;
+          }
+        }
+        svg:hover {
+          cursor: pointer;
+          path:nth-child(2), 
+          path:nth-child(3) {
+            fill: var(--hoverSVGColor);
+            transition: fill var(--svgTransitionsTime) ease-in-out;
+          }
+        }
+        &:hover {
+          cursor: pointer;
+          box-shadow: var(--card-box-shadow);
+        }
+      }
+    }
+  }
+}
